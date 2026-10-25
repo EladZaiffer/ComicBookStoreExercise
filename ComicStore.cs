@@ -158,7 +158,25 @@ public class ComicStore
     /// </summary>
     public string GetHeroWithMostComics()
     {
-        // TODO: התלמידים יכתבו את הקוד כאן
+        Dictionary<string, int> heroCount = new Dictionary<string, int>();
+        foreach (ComicBook comic in Inventory)
+        {
+            if (heroCount.ContainsKey(comic.Hero))
+            {
+                heroCount[comic.Hero]++;
+            }
+            else
+            {
+                heroCount[comic.Hero] = 1;
+            }
+        }
+        foreach (var hero in heroCount)
+        {
+            if (hero.Value == heroCount.Values.Max())
+            {
+                return hero.Key;
+            }
+        }
         return string.Empty;
     }
 }
